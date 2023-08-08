@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slideshow{
+            width: 640px;
+            overflow: scroll;
+            scroll-behavior: smooth;
+        }
+        .slideshow>div{
+            width: max-content;
+        }
+        .slides{
+            display: inline-block;
+            width: 640px;
+            height: 600px;
+            box-sizing: border-box;
+            border: 1px solid gainsboro;
+        }
+        .slides>img{
+            width: inherit;
+        }
+    </style>
+    <script>
+        var total_slides=0;
+        var slide_number=1;
+        var slide;
+        function slideshow_initialise(){
+            total_slides=parseInt(document.getElementsByClassName("slides").length);
+        }
+        function next_slide(){
+            slide=document.getElementsByClassName("slides")[slide_number];
+            slide.scrollIntoView();
+            if(slide_number<total_slides-1){
+                slide_number=slide_number+1;
+            }
+            else{
+                slide_number=0;
+            }
+        }
+    </script>
+</head>
+<body onload="slideshow_initialise();">
+    <div class="slideshow">
+        <div>
+            <div class="slides"><img src="https://i.pinimg.com/originals/55/1d/7f/551d7fd19970f4c27431db6a40a7880b.jpg" alt=""></div>
+            <div class="slides"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/EAM_Nuvolari_S1_640x480.jpg" alt=""></div>
+            <div class="slides"><img src="https://cdn.arstechnica.net/wp-content/uploads/2022/07/2023-Rivian-R1S-1-640x480.jpg" alt=""></div>
+            <div class="slides"><img src="https://img.favcars.com/dodge/mixed/dodge_mixed__pictures_1_640x480.jpg" alt=""></div>
+        </div>
+    </div>
+    <button onclick="previous_slide();">Previous</button>
+    <button onclick="next_slide();">Next</button>
+</body>
+</html>
