@@ -26,19 +26,33 @@
     </style>
     <script>
         var total_slides=0;
-        var slide_number=1;
+        var slide_number=0;
         var slide;
         function slideshow_initialise(){
             total_slides=parseInt(document.getElementsByClassName("slides").length);
         }
         function next_slide(){
-            slide=document.getElementsByClassName("slides")[slide_number];
-            slide.scrollIntoView();
             if(slide_number<total_slides-1){
                 slide_number=slide_number+1;
+                slide=document.getElementsByClassName("slides")[slide_number];
+                slide.scrollIntoView();
             }
             else{
                 slide_number=0;
+                slide=document.getElementsByClassName("slides")[slide_number];
+                slide.scrollIntoView();
+            }
+        }
+        function previous_slide(){
+            if(slide_number==0){
+                slide_number=total_slides-1;
+                slide=document.getElementsByClassName("slides")[slide_number];
+                slide.scrollIntoView();
+            }
+            else{
+                slide_number=slide_number-1;
+                slide=document.getElementsByClassName("slides")[slide_number];
+                slide.scrollIntoView();
             }
         }
     </script>
